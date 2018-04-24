@@ -36,7 +36,7 @@ module Helper
     else
       $stderr.puts "open #{name} [#{origin}]" unless @quiet
       file = nil
-      if name[0,1] == "/"
+      if (Pathname.new name).absolute?
 	# absolute path
 	file = File.open( name ) if File.readable?( name )
       else
